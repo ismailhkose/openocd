@@ -538,7 +538,7 @@ static int max32xxx_spi_write_blob(struct flash_bank *bank, const uint8_t *buffe
 
 	/* Allocate the memory buffer */
 	retval = target_alloc_working_area_try(target, buffer_size, &source);
-	while (retval != ERROR_OK)
+	while (retval != ERROR_OK) {
 		buffer_size /= 2;
 		if (buffer_size <= buf_min) {
 			target_free_working_area(target, write_algorithm);
